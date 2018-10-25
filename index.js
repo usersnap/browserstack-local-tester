@@ -79,13 +79,14 @@ bsLocal.start(bsLocalArgs, async (error) => {
     await navigateAndCheckTitle(`http://${BROWSERSTACK_USER}.browserstack.com/index.html`, 'Hello world from local folder!')
 
   } finally {
-    driver.quit()
-    console.log('Quit driver')
+    driver.quit().then(() => {
+      console.log('Quit driver')
 
-    // stop the Local instance
-    bsLocal.stop(() => {
-      console.log('Stopped BrowserStackLocal')
+      // stop the Local instance
+      bsLocal.stop(() => {
+        stopServer()
+        console.log('Stopped BrowserStackLocal')
+      })
     })
-    stopServer()
   }
 })
