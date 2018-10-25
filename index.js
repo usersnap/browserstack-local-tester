@@ -68,14 +68,12 @@ bsLocal.start(bsLocalArgs, async (error) => {
     // navigate to a public url - works
     await navigateAndCheckTitle('https://usersnap.com', 'Usersnap – Smart Feedback to Build Great Digital Products')
 
-    // navigate to a local url - I did not get it running
+    // navigate to a local url - what is missing to get this running?
     await navigateAndCheckTitle('http://localhost:3000', 'Hello world from server!')
     await navigateAndCheckTitle('http://127.0.0.1:3000', 'Hello world from server!')
 
-    // navigate to the folder referenced in `bsLocalArgs` – I did not get it running, no idea on what url this is served…
-    await navigateAndCheckTitle('http://localhost', 'Hello world from local folder!')
-    await navigateAndCheckTitle('http://127.0.0.1', 'Hello world from local folder!')
-    await navigateAndCheckTitle('http://my-local-box', 'Hello world from local folder!')
+    // navigate to the folder referenced in `bsLocalArgs`
+    await navigateAndCheckTitle(`http://${BROWSERSTACK_USER}.browserstack.com/index.html`, 'Hello world from local folder!')
 
   } finally {
     driver.quit()
