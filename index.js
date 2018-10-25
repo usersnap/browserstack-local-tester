@@ -68,10 +68,10 @@ bsLocal.start(bsLocalArgs, async (error) => {
       }
     }
 
-    // navigate to a public url - works
+    // navigate to a public url
     await navigateAndCheckTitle('https://usersnap.com', 'Usersnap – Smart Feedback to Build Great Digital Products')
 
-    // navigate to a local url - what is missing to get this running?
+    // navigate to a local url
     await navigateAndCheckTitle('http://localhost:3000', 'Hello world from server!')
     await navigateAndCheckTitle('http://127.0.0.1:3000', 'Hello world from server!')
 
