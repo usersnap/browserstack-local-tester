@@ -8,7 +8,7 @@ const { BROWSERSTACK_KEY, BROWSERSTACK_USER } = require('./browserstack.config')
 
 // creates an instance of Local
 const bsLocal = new browserstack.Local()
-
+const LOCAL_IDENTIFIER = 'ladgfjöadfglij'
 
 if (BROWSERSTACK_KEY === '<put your browserstack key here>') {
   throw 'You need to edit your browserstack user & key in `browserstack.config.js`!'
@@ -17,9 +17,11 @@ if (BROWSERSTACK_KEY === '<put your browserstack key here>') {
 const bsLocalArgs = {
   key: BROWSERSTACK_KEY,
   verbose: true,
+  force: true,
   forceLocal: true,
   local: true,
   f: path.resolve(__dirname, './localFolder'),
+  localIdentifier: LOCAL_IDENTIFIER,
   // localProxyHost: '127.0.0.1',
   // localProxyPort: '3128',
   // proxyUser: 'user',
@@ -44,6 +46,7 @@ bsLocal.start(bsLocalArgs, async (error) => {
     resolution: '1024x768',
     'browserstack.user': BROWSERSTACK_USER,
     'browserstack.key': BROWSERSTACK_KEY,
+    'browserstack.localIdentifier' : LOCAL_IDENTIFIER,
   }
 
   const driver = new webdriver.Builder()
